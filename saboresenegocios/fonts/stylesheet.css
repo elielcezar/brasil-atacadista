@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Grtsk Peta';
+    src: url('GrtskPeta-Light.eot');
+    src: url('GrtskPeta-Light.eot?#iefix') format('embedded-opentype'),
+        url('GrtskPeta-Light.woff2') format('woff2'),
+        url('GrtskPeta-Light.woff') format('woff'),
+        url('GrtskPeta-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Grtsk Peta';
+    src: url('GrtskPeta-Medium.eot');
+    src: url('GrtskPeta-Medium.eot?#iefix') format('embedded-opentype'),
+        url('GrtskPeta-Medium.woff2') format('woff2'),
+        url('GrtskPeta-Medium.woff') format('woff'),
+        url('GrtskPeta-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Grtsk Peta';
+    src: url('GrtskPeta-Regular.eot');
+    src: url('GrtskPeta-Regular.eot?#iefix') format('embedded-opentype'),
+        url('GrtskPeta-Regular.woff2') format('woff2'),
+        url('GrtskPeta-Regular.woff') format('woff'),
+        url('GrtskPeta-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Minion Pro';
+    src: url('MinionPro-BoldCapt.eot');
+    src: url('MinionPro-BoldCapt.eot?#iefix') format('embedded-opentype'),
+        url('MinionPro-BoldCapt.woff2') format('woff2'),
+        url('MinionPro-BoldCapt.woff') format('woff'),
+        url('MinionPro-BoldCapt.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
