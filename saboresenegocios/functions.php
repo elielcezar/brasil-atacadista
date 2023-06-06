@@ -2,6 +2,14 @@
 
 wp_enqueue_style( 'admin', get_template_directory_uri() . '/css/admin.css');
 
+function searchfilter($query) { 
+  if ($query->is_search && !is_admin() ) {
+      $query->set('post_type',array('post','receita'));
+  }
+return $query;
+}
+add_filter('pre_get_posts','searchfilter');
+
 function register_new_sidebars()
 {
   register_sidebar(array(
@@ -16,7 +24,7 @@ function register_new_sidebars()
 }
 add_action('widgets_init', 'register_new_sidebars');
 add_image_size('destaque-noticia', 540, 345, true);
-add_image_size('thumb-noticia', 400, 400, true);
+add_image_size('thumb-noticia', 485, 329, true);
 add_image_size('carrossel', 670, 420, true);
 
 function register_my_menus()
