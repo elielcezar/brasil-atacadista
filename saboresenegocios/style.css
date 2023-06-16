@@ -564,7 +564,7 @@ img {
 .menu-mobile .mainMenu {
   position: absolute;
   left: 0;
-  top: 99px;
+  top: 84px;
   z-index: 15;
   height: 100%;
   width: 100%;
@@ -725,7 +725,7 @@ header .container .content h1 a {
   display: inline-block;
   margin: 0;
   text-indent: -5000em;
-  background: transparent url(img/logo.png) center no-repeat;
+  background: transparent url(img/logo.png?v2) center no-repeat;
   background-size: 100% auto;
 }
 @media (orientation: portrait) {
@@ -929,7 +929,13 @@ header#stick-header.show {
 }
 header#stick-header .container .content h1 a {
   width: 280px;
-  height: 75px;
+  height: 76px;
+}
+@media (orientation: portrait) {
+  header#stick-header .container .content h1 a {
+    width: 200px;
+    height: 60px;
+  }
 }
 header#stick-header .container .content .search-form {
   top: 30px;
@@ -992,7 +998,7 @@ header#stick-header .container .content .menu-principal-container {
 .home #newsletter {
   color: #fff;
   background: #046838;
-  padding: 20px;
+  padding: 50px 20px 40px 20px;
   text-align: center;
 }
 @media (orientation: landscape) {
@@ -1130,7 +1136,6 @@ header#stick-header .container .content .menu-principal-container {
 .home .patrocinadores-1 {
   background: #ffcd00;
   text-align: center;
-  padding-top: 20px;
 }
 @media (orientation: portrait) {
   .home .patrocinadores-1 .container {
@@ -1180,42 +1185,43 @@ header#stick-header .container .content .menu-principal-container {
   font-size: 1.2rem;
   margin-bottom: 15px;
 }
-.home .patrocinadores-2 ul {
-  /* .slick-arrow{
-     width: 20px;
-     height: 30px;
-     text-indent: -5000em;   
-     padding: 0;     
-     position: absolute;        
-     top: 35%;
-     background-color: transparent;
-     background-repeat: no-repeat;
-     background-size: 18px;
-
-     &.slick-prev{          
-       background-image: url(img/arrow-l-carrossel.png);          
-       left: 0;
-     }
-     &.slick-next{
-       background-image: url(img/arrow-r-carrossel.png);          
-       right: 0;
-     }
-
-     button{
-       display: none;  
-     }
-   }*/
-}
 .home .patrocinadores-2 ul li a {
   padding: 0 15px;
   display: inline-block;
   height: 80px;
   display: flex;
-  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 .home .patrocinadores-2 ul li a img {
   align-self: auto;
   max-height: 80px;
+  display: inline-block;
+}
+.home .patrocinadores-2 ul .slick-arrow {
+  width: 25px;
+  height: 25px;
+  text-indent: -5000em;
+  padding: 0;
+  position: absolute;
+  top: 35%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  z-index: 10;
+}
+.home .patrocinadores-2 ul .slick-arrow.slick-prev {
+  background-image: url(img/arrow-l-carrossel.png);
+  background-size: auto 100%;
+  left: -15px;
+}
+.home .patrocinadores-2 ul .slick-arrow.slick-next {
+  background-image: url(img/arrow-r-carrossel.png);
+  background-size: auto 100%;
+  right: -30px;
+}
+.home .patrocinadores-2 ul .slick-arrow button {
+  display: none;
 }
 .home .card {
   display: flex;
@@ -1967,11 +1973,39 @@ header#stick-header .container .content .menu-principal-container {
   display: inline-block;
   padding: 15px 0 15px 60px;
 }
+@media (orientation: portrait) {
+  .single-receita #principal .col-1 p {
+    text-transform: none;
+  }
+}
+.single-receita #principal .col-1 p a {
+  color: #1e499a;
+}
+@media (orientation: portrait) {
+  .single-receita #principal .col-1 p strong {
+    display: inline-block;
+    display: inline-block;
+    width: 100%;
+  }
+}
 .single-receita #principal .col-1 p.rendimento {
   background: transparent url(img/ico-rendimento.jpg) left center no-repeat;
 }
 .single-receita #principal .col-1 p.tempo {
-  background: transparent url(img/ico-tempo.jpg) left center no-repeat;
+  background: transparent url(img/ico-tempo.png) left center no-repeat;
+}
+.single-receita #principal .col-1 p.planilha {
+  font-weight: bold;
+  background: transparent url(img/ico-planilha2.png?v2) 7px center no-repeat;
+}
+.single-receita #principal .col-1 p.planilha a {
+  border-bottom: 2px solid #1e499a;
+  padding: 2px;
+  transition: all 0.3s;
+}
+.single-receita #principal .col-1 p.planilha a:hover {
+  color: #fff;
+  background: #1e499a;
 }
 .single-receita #principal .col-2 {
   width: 50%;
@@ -1979,6 +2013,7 @@ header#stick-header .container .content .menu-principal-container {
 @media (orientation: portrait) {
   .single-receita #principal .col-2 {
     width: 100%;
+    margin-top: 50px;
   }
 }
 .single-receita #principal .col-2 h3 {
@@ -2115,63 +2150,10 @@ header#stick-header .container .content .menu-principal-container {
 }
 
 /*--- TODOS OS CONTEUDOS -----------------------------------------------------------------------*/
-.category,
-.page-template-page-conteudos,
-.page-template-page-receitas {
-  /* #masthead{
-     background-position: top center;
-     background-repeat: no-repeat;
-     background-size: cover;
-     text-align: center;
-     min-height: 500px;
-     position: relative;
-     margin-bottom: 50px;
-
-     @media(orientation:portrait){   
-       margin: 0;
-     }
-
-     .background-wrapper{
-       position: absolute;
-       top: 0;
-       left: 0;
-       width: 100%;
-       min-height: 500px;
-       background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-     }
-
-     .container{
-       min-height: 500px;
-       display: flex;      
-       align-items: center;
-       justify-content: center;      
-       justify-content: flex-end;
-       flex-direction: column;
-       padding-bottom: 50px;
-     }
-
-     h1{
-       color: #fff;      
-       font-size: 2.5rem;
-       font-family: 'Playfair Display', serif;
-     }
-     p.chamada{
-       color: #fff;
-       font-size: 1.5rem;
-       font-weight: 700;
-       margin: 0;
-       max-width: 900px;
-       line-height: 2rem;
-
-       @media(orientation:portrait){   
-         font-size: 1rem;
-       }
-     }
-   }*/
-}
 .category #masthead,
 .page-template-page-conteudos #masthead,
-.page-template-page-receitas #masthead {
+.page-template-page-receitas #masthead,
+.page-template-page-publieditoriais #masthead {
   background-image: url(img/bg-receitas.jpg?v2);
   background-position: bottom center;
   background-repeat: no-repeat;
@@ -2182,7 +2164,8 @@ header#stick-header .container .content .menu-principal-container {
 }
 .category #masthead .background-wrapper,
 .page-template-page-conteudos #masthead .background-wrapper,
-.page-template-page-receitas #masthead .background-wrapper {
+.page-template-page-receitas #masthead .background-wrapper,
+.page-template-page-publieditoriais #masthead .background-wrapper {
   position: absolute;
   top: 0;
   left: 0;
@@ -2192,7 +2175,8 @@ header#stick-header .container .content .menu-principal-container {
 }
 .category #masthead .container,
 .page-template-page-conteudos #masthead .container,
-.page-template-page-receitas #masthead .container {
+.page-template-page-receitas #masthead .container,
+.page-template-page-publieditoriais #masthead .container {
   min-height: 500px;
   display: flex;
   align-items: center;
@@ -2203,37 +2187,43 @@ header#stick-header .container .content .menu-principal-container {
 }
 .category #masthead h1,
 .page-template-page-conteudos #masthead h1,
-.page-template-page-receitas #masthead h1 {
+.page-template-page-receitas #masthead h1,
+.page-template-page-publieditoriais #masthead h1 {
   color: #fff;
   font-size: 2.5rem;
   font-family: "Playfair Display", serif;
 }
 .category #principal,
 .page-template-page-conteudos #principal,
-.page-template-page-receitas #principal {
+.page-template-page-receitas #principal,
+.page-template-page-publieditoriais #principal {
   padding: 50px 0;
 }
 .category #principal .container,
 .page-template-page-conteudos #principal .container,
-.page-template-page-receitas #principal .container {
+.page-template-page-receitas #principal .container,
+.page-template-page-publieditoriais #principal .container {
   max-width: 1100px;
 }
 .category #principal .conteudo,
 .page-template-page-conteudos #principal .conteudo,
-.page-template-page-receitas #principal .conteudo {
+.page-template-page-receitas #principal .conteudo,
+.page-template-page-publieditoriais #principal .conteudo {
   display: flex;
   flex-wrap: wrap;
 }
 @media (orientation: portrait) {
   .category #principal .conteudo,
   .page-template-page-conteudos #principal .conteudo,
-  .page-template-page-receitas #principal .conteudo {
+  .page-template-page-receitas #principal .conteudo,
+  .page-template-page-publieditoriais #principal .conteudo {
     flex-direction: column;
   }
 }
 .category #principal .conteudo .item,
 .page-template-page-conteudos #principal .conteudo .item,
-.page-template-page-receitas #principal .conteudo .item {
+.page-template-page-receitas #principal .conteudo .item,
+.page-template-page-publieditoriais #principal .conteudo .item {
   width: 100%;
   display: flex;
   margin-bottom: 40px;
@@ -2241,13 +2231,15 @@ header#stick-header .container .content .menu-principal-container {
 @media (orientation: portrait) {
   .category #principal .conteudo .item,
   .page-template-page-conteudos #principal .conteudo .item,
-  .page-template-page-receitas #principal .conteudo .item {
+  .page-template-page-receitas #principal .conteudo .item,
+  .page-template-page-publieditoriais #principal .conteudo .item {
     flex-direction: column;
   }
 }
 .category #principal .conteudo .item .col-1 img,
 .page-template-page-conteudos #principal .conteudo .item .col-1 img,
-.page-template-page-receitas #principal .conteudo .item .col-1 img {
+.page-template-page-receitas #principal .conteudo .item .col-1 img,
+.page-template-page-publieditoriais #principal .conteudo .item .col-1 img {
   height: auto;
   display: block;
   max-width: 100%;
@@ -2255,20 +2247,23 @@ header#stick-header .container .content .menu-principal-container {
 @media (orientation: landscape) {
   .category #principal .conteudo .item .col-1 img,
   .page-template-page-conteudos #principal .conteudo .item .col-1 img,
-  .page-template-page-receitas #principal .conteudo .item .col-1 img {
+  .page-template-page-receitas #principal .conteudo .item .col-1 img,
+  .page-template-page-publieditoriais #principal .conteudo .item .col-1 img {
     max-width: 400px !important;
   }
 }
 @media (orientation: landscape) {
   .category #principal .conteudo .item .col-2,
   .page-template-page-conteudos #principal .conteudo .item .col-2,
-  .page-template-page-receitas #principal .conteudo .item .col-2 {
+  .page-template-page-receitas #principal .conteudo .item .col-2,
+  .page-template-page-publieditoriais #principal .conteudo .item .col-2 {
     padding-left: 5%;
   }
 }
 .category #principal .conteudo .item .col-2 h4,
 .page-template-page-conteudos #principal .conteudo .item .col-2 h4,
-.page-template-page-receitas #principal .conteudo .item .col-2 h4 {
+.page-template-page-receitas #principal .conteudo .item .col-2 h4,
+.page-template-page-publieditoriais #principal .conteudo .item .col-2 h4 {
   margin: 0;
   width: 100%;
   margin: 0 0 25px 0;
@@ -2276,13 +2271,15 @@ header#stick-header .container .content .menu-principal-container {
 @media (orientation: portrait) {
   .category #principal .conteudo .item .col-2 h4,
   .page-template-page-conteudos #principal .conteudo .item .col-2 h4,
-  .page-template-page-receitas #principal .conteudo .item .col-2 h4 {
+  .page-template-page-receitas #principal .conteudo .item .col-2 h4,
+  .page-template-page-publieditoriais #principal .conteudo .item .col-2 h4 {
     margin: 15px 0;
   }
 }
 .category #principal .conteudo .item .col-2 h4 a,
 .page-template-page-conteudos #principal .conteudo .item .col-2 h4 a,
-.page-template-page-receitas #principal .conteudo .item .col-2 h4 a {
+.page-template-page-receitas #principal .conteudo .item .col-2 h4 a,
+.page-template-page-publieditoriais #principal .conteudo .item .col-2 h4 a {
   display: inline-block;
   line-height: 1.25rem;
   line-height: 2.5rem;
@@ -2292,25 +2289,29 @@ header#stick-header .container .content .menu-principal-container {
 @media (orientation: portrait) {
   .category #principal .conteudo .item .col-2 h4 a,
   .page-template-page-conteudos #principal .conteudo .item .col-2 h4 a,
-  .page-template-page-receitas #principal .conteudo .item .col-2 h4 a {
+  .page-template-page-receitas #principal .conteudo .item .col-2 h4 a,
+  .page-template-page-publieditoriais #principal .conteudo .item .col-2 h4 a {
     line-height: 1.8rem;
     font-size: 1.5rem;
   }
 }
 .category #principal .conteudo .item .col-2 h4 a:hover,
 .page-template-page-conteudos #principal .conteudo .item .col-2 h4 a:hover,
-.page-template-page-receitas #principal .conteudo .item .col-2 h4 a:hover {
+.page-template-page-receitas #principal .conteudo .item .col-2 h4 a:hover,
+.page-template-page-publieditoriais #principal .conteudo .item .col-2 h4 a:hover {
   color: #1e499a;
 }
 .category #principal .conteudo .item .col-2 p,
 .page-template-page-conteudos #principal .conteudo .item .col-2 p,
-.page-template-page-receitas #principal .conteudo .item .col-2 p {
+.page-template-page-receitas #principal .conteudo .item .col-2 p,
+.page-template-page-publieditoriais #principal .conteudo .item .col-2 p {
   font-size: 1.1rem;
   margin: 20px 0 40px 0;
 }
 .category #principal .conteudo .item .col-2 a.btn,
 .page-template-page-conteudos #principal .conteudo .item .col-2 a.btn,
-.page-template-page-receitas #principal .conteudo .item .col-2 a.btn {
+.page-template-page-receitas #principal .conteudo .item .col-2 a.btn,
+.page-template-page-publieditoriais #principal .conteudo .item .col-2 a.btn {
   color: #000;
   background: #ffcd00;
   padding: 4px 40px;
@@ -2326,22 +2327,74 @@ header#stick-header .container .content .menu-principal-container {
 }
 .category #principal .conteudo .item .col-2 a.btn:hover,
 .page-template-page-conteudos #principal .conteudo .item .col-2 a.btn:hover,
-.page-template-page-receitas #principal .conteudo .item .col-2 a.btn:hover {
+.page-template-page-receitas #principal .conteudo .item .col-2 a.btn:hover,
+.page-template-page-publieditoriais #principal .conteudo .item .col-2 a.btn:hover {
   background: #1e499a;
   color: #fff;
 }
 .category #principal .pagination,
 .page-template-page-conteudos #principal .pagination,
-.page-template-page-receitas #principal .pagination {
+.page-template-page-receitas #principal .pagination,
+.page-template-page-publieditoriais #principal .pagination {
   width: 100%;
   text-align: center;
 }
 @media (orientation: landscape) {
   .category #principal .pagination,
   .page-template-page-conteudos #principal .pagination,
-  .page-template-page-receitas #principal .pagination {
+  .page-template-page-receitas #principal .pagination,
+  .page-template-page-publieditoriais #principal .pagination {
     margin: 50px 0 100px 0;
   }
+}
+
+/*--- HEADER / TOPO / POR CATEGORIA ----------------------------------------------------------*/
+body.page-template-page-conteudos #masthead {
+  background-image: url(img/bg-blog.jpg);
+}
+
+body.page-template-page-receitas #masthead {
+  background-image: url(img/bg-receitas.jpg);
+}
+
+body.page-template-page-publieditoriais #masthead {
+  background-image: url(img/bg-publieditoriais.jpg);
+}
+
+body.page-id-574 #masthead {
+  background-image: url(img/bg-politica-de-privacidade.jpg);
+}
+
+body.page-id-571 #masthead {
+  background-image: url(img/bg-politica-de-cookies.jpg);
+}
+
+body.category-5 #masthead {
+  background-image: url(img/bg-adega.jpg);
+}
+
+body.category-22 #masthead {
+  background-image: url(img/bg-dicas-da-estacao.jpg);
+}
+
+body.category-7 #masthead {
+  background-image: url(img/bg-de-olho-nas-contas.jpg);
+}
+
+body.category-6 #masthead {
+  background-image: url(img/bg-mao-na-massa.jpg);
+}
+
+body.category-21 #masthead {
+  background-image: url(img/bg-do-seu-jeito.jpg);
+}
+
+body.category-4 #masthead {
+  background-image: url(img/bg-destaque.jpg);
+}
+
+body.category-3 #masthead {
+  background-image: url(img/bg-novidades.jpg);
 }
 
 /*--- POST/BLOG INDIVIDUAL ---------------------------------------------------------------------------------------*/
@@ -2495,6 +2548,13 @@ header#stick-header .container .content .menu-principal-container {
 .single-post #principal .conteudo p a:hover {
   color: #fff;
   background: #1e499a;
+}
+@media (orientation: landscape) {
+  .single-post #principal .conteudo img.alignleft {
+    float: left;
+    margin: 0 20px 5px 0;
+    display: block;
+  }
 }
 .single-post #principal .conteudo .wp-block-column {
   text-align: center;
@@ -2656,6 +2716,11 @@ footer .footer-1 {
 footer .footer-1 .container {
   display: block;
 }
+@media (orientation: portrait) {
+  footer .footer-1 .container {
+    padding: 1%;
+  }
+}
 footer .footer-1 ul {
   display: flex;
   justify-content: space-around;
@@ -2666,15 +2731,16 @@ footer .footer-1 ul .slick-list {
   width: 100%;
 }
 footer .footer-1 ul li {
-  padding: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-@media (orientation: portrait) {
-  footer .footer-1 ul li {
-    padding: 1%;
-  }
+footer .footer-1 ul li a {
+  display: inline-block;
 }
-footer .footer-1 ul li img {
+footer .footer-1 ul li a img {
   max-height: 90px;
+  display: inline-block;
 }
 footer .footer-2 {
   text-align: center;
@@ -2683,7 +2749,12 @@ footer .footer-2 {
   margin-bottom: 10px;
 }
 footer .footer-2 .container {
-  display: block;
+  max-width: 1100px;
+}
+@media (orientation: portrait) {
+  footer .footer-2 .container {
+    padding: 1%;
+  }
 }
 footer .footer-2 h3 {
   color: #fff;
@@ -2698,15 +2769,41 @@ footer .footer-2 ul .slick-list {
   width: 100%;
 }
 footer .footer-2 ul li {
-  padding: 0.5% 0.5% 2% 0.5%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-@media (orientation: portrait) {
-  footer .footer-2 ul li {
-    padding: 1%;
-  }
+footer .footer-2 ul li a {
+  display: inline-block;
 }
-footer .footer-2 ul li img {
+footer .footer-2 ul li a img {
   max-height: 80px;
+}
+footer .footer-2 .slick-arrow {
+  width: 25px;
+  height: 25px;
+  text-indent: -5000em;
+  padding: 0;
+  position: absolute;
+  top: 35%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  z-index: 10;
+}
+footer .footer-2 .slick-arrow.slick-prev {
+  background-image: url(img/arrow-l-carrossel.png);
+  background-size: auto 100%;
+  left: -15px;
+}
+footer .footer-2 .slick-arrow.slick-next {
+  background-image: url(img/arrow-r-carrossel.png);
+  background-size: auto 100%;
+  right: -30px;
+}
+footer .footer-2 .slick-arrow button {
+  display: none;
 }
 footer .footer-3 {
   background: #1e499a;

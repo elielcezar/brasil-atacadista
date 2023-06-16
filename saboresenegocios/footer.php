@@ -1,7 +1,6 @@
 <footer>
   <div class="footer-1">
     <div class="container">
-      <h3>Patrocinadores</h3>
       <ul class="patrocinadores">
         <?php
         $loop = new WP_Query(array(
@@ -14,7 +13,15 @@
         if ($loop->have_posts()) :
           while ($loop->have_posts()) : $loop->the_post(); ?>
 
-            <li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo'); ?>" alt=""></a></li>
+            <!--li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo'); ?>" alt=""></a></li-->
+
+            <?php
+            $has_content = get_field('possui_conteudo');
+            if ($has_content) { ?>
+              <li><a href="<?php the_permalink(); ?>"><img src="<?php the_field('logo'); ?>" alt=""></a></li>
+            <?php } else { ?>
+              <li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo'); ?>" alt=""></a></li>
+            <?php } ?>
 
         <?php endwhile;
         endif;
@@ -26,7 +33,6 @@
 
   <div class="footer-2">
     <div class="container">
-      <h3>Patrocinadores</h3>
       <ul class="patrocinadores">
         <?php
         $loop = new WP_Query(array(
@@ -39,7 +45,17 @@
         if ($loop->have_posts()) :
           while ($loop->have_posts()) : $loop->the_post(); ?>
 
-            <li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li>
+            <!--li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li-->
+
+            <?php
+            $has_content = get_field('possui_conteudo');
+            if ($has_content) { ?>
+              <li><a href="<?php the_permalink(); ?>"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li>
+            <?php } else { ?>
+              <li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li>
+            <?php } ?>
+
+
 
         <?php endwhile;
         endif;
@@ -56,7 +72,7 @@
           <div class="row">
             <div class="col-1">
               <ul>
-                <li><a href="<?php echo site_url(); ?>/conteudos/">Conteúdos</a></li>
+                <li><a href="<?php echo site_url(); ?>/blog/">Blog</a></li>
                 <li><a href="<?php echo site_url(); ?>/receitas/">Receitas</a></li>
                 <li><a href="<?php echo site_url(); ?>/revista">Revista</a></li>
                 <li><a href="<?php echo site_url(); ?>/vitrine-do-fornecedor/">Vitrine do Fornecedor</a></li>

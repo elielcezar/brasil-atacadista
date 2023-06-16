@@ -21,21 +21,28 @@ Template Name: Fornecedores
   <div class="container">
 
     <ul class="fornecedores">
-    <?php
-          $loop = new WP_Query(array(
-            'post_type' => 'fornecedores',            
-            'posts_per_page' => -1,
-            'orderby' => 'rand'
-          ));
-          if ($loop->have_posts()) :
-            while ($loop->have_posts()) : $loop->the_post(); ?>
+      <?php
+      $loop = new WP_Query(array(
+        'post_type' => 'fornecedores',
+        'posts_per_page' => -1,
+        'orderby' => 'rand'
+      ));
+      if ($loop->have_posts()) :
+        while ($loop->have_posts()) : $loop->the_post(); ?>
 
-              <li><img src="<?php the_field('logo'); ?>" alt=""></li>
+      <!--li><img src="<?php the_field('logo'); ?>" alt=""></li-->
+      <?php
+          $has_content = get_field('possui_conteudo');
+          if ($has_content) { ?>
+      <li><a href="<?php the_permalink(); ?>"><img src="<?php the_field('logo'); ?>" alt=""></a></li>
+      <?php } else { ?>
+      <li><img src="<?php the_field('logo'); ?>" alt=""></li>
+      <?php } ?>
 
-          <?php endwhile;
-          endif;
-          wp_reset_postdata();
-          ?>
+      <?php endwhile;
+      endif;
+      wp_reset_postdata();
+      ?>
     </ul>
 
   </div>

@@ -23,8 +23,7 @@
       var margin = rightHeight - leftHeight - 50;
       var removeFixedOffset = sectionOffset + rightHeight - leftHeight;
 
-      $(window).on('scroll', function() {       
-
+      $(window).on('scroll', function() {    
         if ($(this).scrollTop() > sectionOffset) {
           $('#sidebar').addClass('fixed');
         } else {
@@ -45,7 +44,6 @@
     const cloneHeader = mainHeader.cloneNode(true);        
     cloneHeader.id = 'stick-header'; 
     $(cloneHeader).insertAfter(mainHeader); 
-
     
     if (!mobile) {
       $(window).scroll(function (event) {
@@ -62,16 +60,18 @@
 
     /* botão do menu */
     $('.menuBtn').click(function () {
-        $('.menuBtn').toggleClass('act');
-        if ($('.menuBtn').hasClass('act')) {
-          $('.mainMenu').addClass('act');
-        } else {
-          $('.mainMenu').removeClass('act');
-        }
-      });
-    
+      $('.menuBtn').toggleClass('act');
+      if ($('.menuBtn').hasClass('act')) {
+        $('.mainMenu').addClass('act');
+      } else {
+        $('.mainMenu').removeClass('act');
+      }
+    });
 
-
+    $('.menu-mobile li#menu-item-337 a').click(function(){      
+      $('.menuBtn').removeClass('act');
+      $('.mainMenu').removeClass('act');
+    });
     
     /* ACCORDION ------------------------------------------------------------------------------*/
     $('p.accordion').click(function () {
@@ -109,54 +109,8 @@
       ],
     });
 
-    $('.footer-1 .patrocinadores').slick({
-      slidesToShow: 5,
-      dots: false,
-      infinite: false,
-      arrows: false,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            autoplay: true,
-            dots: false,
-            infinite: true,
-            arrows: false,
-            adaptiveHeight: true,
-            fade: false,
-            autoplaySpeed: 3000,
-          },
-        },
-      ],
-    });
-
     $('.home .patrocinadores-1 .patrocinadores').slick({
       slidesToShow: 5,
-      dots: false,
-      infinite: false,
-      arrows: false,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            autoplay: true,
-            dots: false,
-            infinite: true,
-            arrows: false,
-            adaptiveHeight: true,
-            fade: false,
-            autoplaySpeed: 3000,
-          },
-        },
-      ],
-    });
-
-    $('.footer-2 .patrocinadores').slick({
-      slidesToShow: 4,
       dots: false,
       infinite: false,
       arrows: false,
@@ -181,6 +135,30 @@
     $('.home .patrocinadores-2 .carrossel-patrocinadores').slick({
       slidesToShow: 4,
       dots: false,
+      infinite: true,
+      arrows: true,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2,            
+            autoplay: true,
+            dots: false,
+            infinite: true,
+            arrows: false,
+            adaptiveHeight: true,
+            fade: false,
+            autoplaySpeed: 3000,
+          },
+        },
+      ],
+    });
+
+
+    $('.footer-1 .patrocinadores').slick({
+      slidesToShow: 5,
+      dots: false,
       infinite: false,
       arrows: false,
       responsive: [
@@ -200,15 +178,38 @@
         },
       ],
     });
+   
 
-    $('.carrossel-patrocinadores').slick({
+    $('.footer-2 .patrocinadores').slick({
+      slidesToShow: 4,
+      dots: false,
+      infinite: true,
+      arrows: true,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2,            
+            autoplay: true,
+            dots: false,            
+            arrows: false,
+            adaptiveHeight: true,
+            fade: false,
+            autoplaySpeed: 3000,
+          },
+        },
+      ],
+    });    
+
+    /*$('.carrossel-patrocinadores').slick({
       slidesToShow: 4,
       slidesToScroll: 1,
       autoplay: true,
       dots: false,
       infinite: true,
       arrows: true,
-    });
+    });*/
 
     /* fancybox */
     /*$('[data-fancybox="gallery"]').fancybox({

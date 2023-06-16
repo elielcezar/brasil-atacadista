@@ -119,10 +119,7 @@ Template Name: Homepage Custom
   <div class="patrocinadores-1">
     <div class="container">
       <div class="content">
-        <h3>Patrocinadores</h3>
         <ul class="patrocinadores">
-
-
           <?php
           $loop = new WP_Query(array(
             'post_type' => 'fornecedores',
@@ -134,7 +131,15 @@ Template Name: Homepage Custom
           if ($loop->have_posts()) :
             while ($loop->have_posts()) : $loop->the_post(); ?>
 
-              <li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo'); ?>" alt=""></a></li>
+              <!--li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo'); ?>" alt=""></a></li-->
+              <?php
+              $has_content = get_field('possui_conteudo');
+              if ($has_content) { ?>
+                <li><a href="<?php the_permalink(); ?>"><img src="<?php the_field('logo'); ?>" alt=""></a></li>
+              <?php } else { ?>
+                <li><img src="<?php the_field('logo'); ?>" alt=""></li>
+              <?php } ?>
+
 
           <?php endwhile;
           endif;
@@ -150,7 +155,6 @@ Template Name: Homepage Custom
   <div class="patrocinadores-2">
     <div class="container">
       <div class="content">
-        <h3>Patrocinadores</h3>
         <ul class="carrossel-patrocinadores">
           <?php
           $loop = new WP_Query(array(
@@ -163,7 +167,14 @@ Template Name: Homepage Custom
           if ($loop->have_posts()) :
             while ($loop->have_posts()) : $loop->the_post(); ?>
 
-              <li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li>
+              <!--li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li-->
+              <?php
+              $has_content = get_field('possui_conteudo');
+              if ($has_content) { ?>
+                <li><a href="<?php the_permalink(); ?>"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li>
+              <?php } else { ?>
+                <li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li>
+              <?php } ?>
 
           <?php endwhile;
           endif;
@@ -223,12 +234,12 @@ Template Name: Homepage Custom
 
         <?php
         $loop = new WP_Query(array(
-          'post_type' => 'post',          
+          'post_type' => array('post', 'receita'),
           'posts_per_page' => 1,
           'meta_query' => array(
             array(
-                'key'   => 'publieditorial',
-                'value' => '1',
+              'key'   => 'publieditorial',
+              'value' => '1',
             )
           )
         ));

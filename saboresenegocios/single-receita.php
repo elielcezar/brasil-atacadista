@@ -40,43 +40,6 @@
       </div>
     </div>
   </div>
-
-  <!--div class="tabs">
-            <ul>
-                <li><a href="">Carnes</a></li>
-                <li><a href="">Masses</a></li>
-                <li><a href="">Sopas</a></li>
-                <li><a href="">Frutos do Mar</a></li>
-                <li><a href="">Sobremesas</a></li>
-                <li><a href="">Veganos</a></li>
-            </ul>
-        </div-->
-  <!--div class="posts">
-            <div class="col-1">
-                <div class="item">
-                    <img src="<?php echo get_stylesheet_directory_uri() ?>/img/thumb-3.jpg" alt="">
-                    <h4>Lorem ipsum</h4>                    
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="item">
-                    <img src="<?php echo get_stylesheet_directory_uri() ?>/img/thumb-1.jpg" alt="">
-                    <h4>Lorem ipsum</h4>                    
-                </div>
-                <div class="item">
-                    <img src="<?php echo get_stylesheet_directory_uri() ?>/img/thumb-2.jpg" alt="">
-                    <h4>Lorem ipsum</h4>                    
-                </div>
-                <div class="item">
-                    <img src="<?php echo get_stylesheet_directory_uri() ?>/img/thumb-3.jpg" alt="">
-                    <h4>Lorem ipsum</h4>                    
-                </div>
-                <div class="item">
-                    <img src="<?php echo get_stylesheet_directory_uri() ?>/img/thumb-3.jpg" alt="">
-                    <h4>Lorem ipsum</h4>                    
-                </div>
-            </div>           
-        </div-->
 </div>
 
 <div id="principal">
@@ -85,22 +48,35 @@
     <div class="col-1">
       <img src="<?php the_field('foto_receita'); ?>">
       <div id="compartilhe">
-      <div class="container">
-        <?php
+        <div class="container">
+          <?php
         global $wp;
         $current_url = home_url(add_query_arg(array(), $wp->request));
         ?>
-        <ul>
-          <li class="fb"><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $current_url; ?>" target="_blank">Facebook</a></li>
-          <li class="twitter"><a href="https://twitter.com/intent/tweet?text=<?php echo $current_url; ?>" target="_blank">Twitter</a></li>
-          <li class="wpp"><a href="https://api.whatsapp.com/send?text=<?php echo $current_url; ?>" target="_blank">Whatsapp</a></li>
-          <li class="telegram"><a href="https://t.me/share/url?url=<?php echo $current_url; ?>" target="_blank">Telegram</a></li>
-          <li class="linkedin"><a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo $current_url; ?>" target="_blank">Linkedin</a></li>
-        </ul>
+          <ul>
+            <li class="fb"><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $current_url; ?>" target="_blank">Facebook</a></li>
+            <li class="twitter"><a href="https://twitter.com/intent/tweet?text=<?php echo $current_url; ?>" target="_blank">Twitter</a></li>
+            <li class="wpp"><a href="https://api.whatsapp.com/send?text=<?php echo $current_url; ?>" target="_blank">Whatsapp</a></li>
+            <li class="telegram"><a href="https://t.me/share/url?url=<?php echo $current_url; ?>" target="_blank">Telegram</a></li>
+            <li class="linkedin"><a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo $current_url; ?>" target="_blank">Linkedin</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
+      <?php 
+      $rendimento = get_field('rendimento');
+      if ($rendimento){ ?>
       <p class="rendimento">Rende: <strong><?php the_field('rendimento'); ?></strong></p>
+      <?php } ?>
+      <?php
+        $tempo = get_field('tempo_de_preparo');
+        if ($tempo){ ?>
       <p class="tempo">Tempo de preparo: <strong><?php the_field('tempo_de_preparo'); ?></strong> </p>
+      <?php } ?>
+      <?php
+      $file = get_field('planilha_de_custos');
+      if ($file){ ?>
+      <p class="planilha"><a href="<?php echo $file; ?>" target="_blank">Faça o download da Planilha de Custos</a></p>
+      <?php } ?>
     </div>
     <div class="col-2">
       <?php the_content(); ?>
@@ -118,42 +94,42 @@
 </div>
 
 
-<div id="recomendados">    
-    
-    <div class="container">        
-          <?php
+<div id="recomendados">
+
+  <div class="container">
+    <?php
             $featured_posts = get_field('recomendados');
             if( $featured_posts ): ?>
 
-                <h3>Recomendados para você</h3>
+    <h3>Recomendados para você</h3>
 
-                <div class="posts">
-                
-                <?php foreach( $featured_posts as $post ): 
+    <div class="posts">
+
+      <?php foreach( $featured_posts as $post ): 
 
                     // Setup this post for WP functions (variable must be named $post).
                     setup_postdata($post); ?>
-                    <div class="item">
-                      <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail('thumb-noticia'); ?>
-                      </a>
-                      <h4>
-                        <a href="<?php the_permalink(); ?>">
-                          <?php the_title(); ?>
-                        </a>
-                      </h4>
-                      <!--p><?php the_field('chamada'); ?></p-->
-                    </div>       
-                <?php endforeach; ?>
-                
-                <?php 
+      <div class="item">
+        <a href="<?php the_permalink(); ?>">
+          <?php the_post_thumbnail('thumb-noticia'); ?>
+        </a>
+        <h4>
+          <a href="<?php the_permalink(); ?>">
+            <?php the_title(); ?>
+          </a>
+        </h4>
+        <!--p><?php the_field('chamada'); ?></p-->
+      </div>
+      <?php endforeach; ?>
+
+      <?php 
                 // Reset the global post object so that the rest of the page works correctly.
                 wp_reset_postdata(); ?>
-                
-              </div> 
 
-            <?php endif; ?>
-               
     </div>
+
+    <?php endif; ?>
+
+  </div>
 </div>
 <?php get_footer(); ?>

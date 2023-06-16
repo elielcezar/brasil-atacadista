@@ -124,7 +124,7 @@ img{
   .mainMenu {
     position: absolute;
     left: 0;
-    top: 99px;
+    top: 84px;
     z-index: 15;
     height: 100%;
     width: 100%;
@@ -302,8 +302,9 @@ header {
           display: inline-block;
           margin: 0;        
           text-indent: -5000em;
-          background: transparent url(img/logo.png) center no-repeat;        
+          background: transparent url(img/logo.png?v2) center no-repeat;        
           background-size: 100% auto;
+          
   
           @media(orientation:portrait){
             width: 300px;
@@ -522,7 +523,11 @@ header#stick-header{
       h1{
         a{
           width: 280px;
-          height: 75px;
+          height: 76px;
+          @media(orientation:portrait){
+            width: 200px;
+            height: 60px;
+          }
         }
       }
       .search-form{
@@ -599,7 +604,7 @@ header#stick-header{
   #newsletter{
     color: #fff;        
     background: $verde;
-    padding: 20px;
+    padding: 50px 20px 40px 20px;
     text-align: center;
 
     @media(orientation:landscape){
@@ -760,8 +765,7 @@ header#stick-header{
 
   .patrocinadores-1{
     background: $amarelo;
-    text-align: center;
-    padding-top: 20px;  
+    text-align: center;    
     
     .container{
       @media(orientation:portrait){
@@ -815,25 +819,26 @@ header#stick-header{
       font-size: 1.2rem;
       margin-bottom: 15px;
     }
-    ul{          
-      //padding: 0 30px;  
-      li{
+    ul{                
+      li{        
         a{
           padding: 0 15px;          
           display: inline-block;
           height: 80px;
           display: flex;
-          align-items: center;
+          justify-content: center;
+          width: 100%;          
           img{
             align-self: auto;
             max-height: 80px;
+            display: inline-block;
           }
         }
       }  
       
-     /* .slick-arrow{
-        width: 20px;
-        height: 30px;
+      .slick-arrow{
+        width: 25px;
+        height: 25px;
         text-indent: -5000em;   
         padding: 0;     
         position: absolute;        
@@ -841,20 +846,23 @@ header#stick-header{
         background-color: transparent;
         background-repeat: no-repeat;
         background-size: 18px;
+        z-index: 10;
         
         &.slick-prev{          
           background-image: url(img/arrow-l-carrossel.png);          
-          left: 0;
+          background-size: auto 100%;
+          left: -15px;          
         }
         &.slick-next{
           background-image: url(img/arrow-r-carrossel.png);          
-          right: 0;
+          background-size: auto 100%;
+          right: -30px;
         }
 
         button{
           display: none;  
         }
-      }*/
+      }
     }
   }
 
@@ -1673,11 +1681,42 @@ header#stick-header{
         display: inline-block;        
         padding: 15px 0 15px 60px;
 
+        @media(orientation:portrait){         
+          text-transform: none;
+        }
+
+        a{
+          color: $azul;
+        }
+
+        strong{
+          @media(orientation:portrait){
+            display: inline-block;
+            display: inline-block;
+            width: 100%;
+          }
+        }
+
         &.rendimento{
           background: transparent url(img/ico-rendimento.jpg) left center no-repeat;
         }
         &.tempo{
-          background: transparent url(img/ico-tempo.jpg) left center no-repeat;
+          background: transparent url(img/ico-tempo.png) left center no-repeat;
+        }
+        &.planilha{
+          font-weight: bold;
+          background: transparent url(img/ico-planilha2.png?v2) 7px center no-repeat;
+
+          a{
+            border-bottom: 2px solid $azul;
+            padding: 2px;
+            transition: all .3s;            
+
+            &:hover{
+              color: #fff;
+              background: $azul;
+            }
+          }
         }
       }
     }
@@ -1686,6 +1725,7 @@ header#stick-header{
 
       @media(orientation:portrait){
         width: 100%;
+        margin-top: 50px;
       }
 
       h3{
@@ -1831,7 +1871,8 @@ header#stick-header{
 /*--- TODOS OS CONTEUDOS -----------------------------------------------------------------------*/
 .category,
 .page-template-page-conteudos,
-.page-template-page-receitas {
+.page-template-page-receitas,
+.page-template-page-publieditoriais {
   #masthead{    
     background-image: url(img/bg-receitas.jpg?v2);    
     background-position: bottom center;
@@ -1866,57 +1907,7 @@ header#stick-header{
       font-family: 'Playfair Display', serif;
     }
   }
- /* #masthead{
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
-    min-height: 500px;
-    position: relative;
-    margin-bottom: 50px;
-
-    @media(orientation:portrait){   
-      margin: 0;
-    }
-
-    .background-wrapper{
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      min-height: 500px;
-      background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-    }
-
-    .container{
-      min-height: 500px;
-      display: flex;      
-      align-items: center;
-      justify-content: center;      
-      justify-content: flex-end;
-      flex-direction: column;
-      padding-bottom: 50px;
-    }
-
-    h1{
-      color: #fff;      
-      font-size: 2.5rem;
-      font-family: 'Playfair Display', serif;
-    }
-    p.chamada{
-      color: #fff;
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 0;
-      max-width: 900px;
-      line-height: 2rem;
-
-      @media(orientation:portrait){   
-        font-size: 1rem;
-      }
-    }
-  }*/
-
+ 
   #principal{
     padding: 50px 0;
 
@@ -2017,6 +2008,48 @@ header#stick-header{
     }
   }
 }
+
+/*--- HEADER / TOPO / POR CATEGORIA ----------------------------------------------------------*/
+
+body.page-template-page-conteudos {
+  #masthead{background-image: url(img/bg-blog.jpg);}
+}
+body.page-template-page-receitas {
+  #masthead{background-image: url(img/bg-receitas.jpg);}
+}
+body.page-template-page-publieditoriais {
+  #masthead{background-image: url(img/bg-publieditoriais.jpg);}
+}
+
+body.page-id-574 {
+  #masthead{background-image: url(img/bg-politica-de-privacidade.jpg);}
+}
+body.page-id-571 {
+  #masthead{background-image: url(img/bg-politica-de-cookies.jpg);}
+}
+
+body.category-5 {
+  #masthead{background-image: url(img/bg-adega.jpg);}
+}
+body.category-22 {
+  #masthead{background-image: url(img/bg-dicas-da-estacao.jpg);}
+}
+body.category-7 {
+  #masthead{background-image: url(img/bg-de-olho-nas-contas.jpg);}
+}
+body.category-6 {
+  #masthead{background-image: url(img/bg-mao-na-massa.jpg);}
+}
+body.category-21 {
+  #masthead{background-image: url(img/bg-do-seu-jeito.jpg);}
+}
+body.category-4 {
+  #masthead{background-image: url(img/bg-destaque.jpg);}
+}
+body.category-3 {
+  #masthead{background-image: url(img/bg-novidades.jpg);}
+}
+
 
 /*--- POST/BLOG INDIVIDUAL ---------------------------------------------------------------------------------------*/
 .single-post {
@@ -2177,6 +2210,15 @@ header#stick-header{
             color: #fff;
             background: $azul;
           }
+        }
+      }  
+      
+      
+      img.alignleft{
+        @media(orientation:landscape){
+          float: left;
+          margin: 0 20px 5px 0;
+          display: block;
         }
       }
 
@@ -2365,6 +2407,10 @@ footer {
     text-align: center;
     .container{
       display: block;
+
+      @media(orientation:portrait){
+        padding: 1%;
+      }
     }
     ul{
       display: flex;  
@@ -2374,15 +2420,17 @@ footer {
       .slick-list{
         width: 100%;
       }
-      li{
-        padding: 3%;
+      li{        
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-        @media(orientation:portrait){
-          padding: 1%;
-        }
-
-        img{
-          max-height: 90px;
+        a{
+          display: inline-block;
+          img{
+            max-height: 90px;
+            display: inline-block;
+          }
         }
       }    
     }
@@ -2393,8 +2441,12 @@ footer {
     padding-top: 10px;
     margin-bottom: 10px;
 
-    .container{
-      display: block;
+    .container{      
+      max-width: 1100px;
+
+      @media(orientation:portrait){
+        padding: 1%;
+      }
     }
 
     h3{
@@ -2409,16 +2461,46 @@ footer {
         width: 100%;
       }
       li{
-        padding: .5% .5% 2% .5%;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
 
-        @media(orientation:portrait){
-          padding: 1%;
-        }
-
-        img{
-          max-height: 80px;
+        a{
+          display: inline-block;
+          img{
+            max-height: 80px;
+          }
         }
       }    
+    }
+    .slick-arrow{
+      width: 25px;
+      height: 25px;
+      text-indent: -5000em;   
+      padding: 0;     
+      position: absolute;        
+      top: 35%;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-size: 18px;
+      z-index: 10;
+      
+      &.slick-prev{          
+        background-image: url(img/arrow-l-carrossel.png);          
+        background-size: auto 100%;
+        left: -15px;          
+      }
+      &.slick-next{
+        background-image: url(img/arrow-r-carrossel.png);          
+        background-size: auto 100%;
+        right: -30px;
+      }
+
+      button{
+        display: none;  
+      }
     }
   }
   .footer-3{
