@@ -130,14 +130,12 @@ Template Name: Homepage Custom
           ));
           if ($loop->have_posts()) :
             while ($loop->have_posts()) : $loop->the_post(); ?>
-
-              <!--li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo'); ?>" alt=""></a></li-->
               <?php
               $has_content = get_field('possui_conteudo');
               if ($has_content) { ?>
                 <li><a href="<?php the_permalink(); ?>"><img src="<?php the_field('logo'); ?>" alt=""></a></li>
               <?php } else { ?>
-                <li><img src="<?php the_field('logo'); ?>" alt=""></li>
+                <li><a href="<?php the_field('link_vitrine'); ?>"><img src="<?php the_field('logo'); ?>" alt=""></a></li>
               <?php } ?>
 
 
@@ -165,15 +163,13 @@ Template Name: Homepage Custom
             'orderby' => 'rand'
           ));
           if ($loop->have_posts()) :
-            while ($loop->have_posts()) : $loop->the_post(); ?>
-
-              <!--li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li-->
+            while ($loop->have_posts()) : $loop->the_post(); ?>              
               <?php
               $has_content = get_field('possui_conteudo');
               if ($has_content) { ?>
                 <li><a href="<?php the_permalink(); ?>"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li>
               <?php } else { ?>
-                <li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li>
+                <li><a href="<?php the_field('link_vitrine'); ?>"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li>
               <?php } ?>
 
           <?php endwhile;
@@ -293,15 +289,19 @@ Template Name: Homepage Custom
             <p><?php the_field('chamada'); ?></p>
 
             <div class="lista-dicas">
-              <div class="item">
-                <a href="<?php the_permalink(); ?>"><img src="<?php echo get_stylesheet_directory_uri() ?>/img/dicas-1.jpg" alt=""></a>
-              </div>
-              <div class="item">
-                <a href="<?php the_permalink(); ?>"><img src="http://brasilatacadista.com.br/saboresenegocios/wp-content/uploads/2023/04/sopa3.jpg" alt=""></a>
-              </div>
-              <div class="item">
-                <a href="<?php the_permalink(); ?>"><img src="http://brasilatacadista.com.br/saboresenegocios/wp-content/uploads/2023/04/sopa2.jpg" alt=""></a>
-              </div>
+            <?php
+              $images = acf_photo_gallery('imagens_home', $post->ID);
+              if (count($images)) :
+                foreach ($images as $image) :
+                  $full_image_url = $image['full_image_url'];
+                  $full_image_url = acf_photo_gallery_resize_image($full_image_url, 353, 234); 
+                  $url = $image['url'];
+              ?>
+                <div class="item">
+                  <a href="<?php the_permalink(); ?>"><img src="<?php echo $full_image_url; ?>" alt=""></a>
+                </div>
+                <?php endforeach;
+                endif; ?>
             </div>
             <a href="<?php the_permalink(); ?>" class="btn">Saiba mais</a>
 
@@ -314,37 +314,6 @@ Template Name: Homepage Custom
       <div class="sidebar"></div>
     </div>
   </section>
-
-  <!--section id="video">
-  <div class="container">
-    <div class="content">
-    <img src="<?php echo get_stylesheet_directory_uri() ?>/img/video-1.jpg" alt="">
-    </div>
-    <div class="sidebar"></div>
-  </div>
-</section-->
-
-
-
-
-  <!--div id="seu-negocio">
-  <div class="container">
-    <div class="content">
-        <div class="card">
-          <div class="info">
-            <h2>Seu negócio</h2>
-            <h3>Lorem ipsum dolor site</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. </p>
-            <a href="" class="btn">Saiba mais</a>
-          </div>
-          <div class="img">
-            <img src="<?php echo get_stylesheet_directory_uri() ?>/img/seu-negocio.jpg" alt="">
-          </div>
-        </div>
-    </div>
-    <div class="sidebar"></div>
-  </div>        
-</div-->
 
   <section id="novidades">
     <div class="container">
@@ -362,15 +331,19 @@ Template Name: Homepage Custom
             <p><?php the_field('chamada'); ?></p>
 
             <div class="lista-destinos">
-              <div class="item">
-                <a href="<?php the_permalink(); ?>"><img src="http://brasilatacadista.com.br/saboresenegocios/wp-content/uploads/2023/04/causa-2.jpg" alt=""></a>
-              </div>
-              <div class="item">
-                <a href="<?php the_permalink(); ?>"><img src="http://brasilatacadista.com.br/saboresenegocios/wp-content/uploads/2023/04/causa3.jpg" alt=""></a>
-              </div>
-              <div class="item">
-                <a href="<?php the_permalink(); ?>"><img src="http://brasilatacadista.com.br/saboresenegocios/wp-content/uploads/2023/04/causa-1.jpg" alt=""></a>
-              </div>
+            <?php
+              $images = acf_photo_gallery('imagens_home', $post->ID);
+              if (count($images)) :
+                foreach ($images as $image) :
+                  $full_image_url = $image['full_image_url'];
+                  $full_image_url = acf_photo_gallery_resize_image($full_image_url, 353, 234); 
+                  $url = $image['url'];
+              ?>
+                <div class="item">
+                  <a href="<?php the_permalink(); ?>"><img src="<?php echo $full_image_url; ?>" alt=""></a>
+                </div>
+                <?php endforeach;
+                endif; ?>
             </div>
             <a href="<?php the_permalink(); ?>" class="btn">Saiba mais</a>
 
@@ -394,7 +367,7 @@ Template Name: Homepage Custom
         $loop = new WP_Query(array(
           'post_type' => 'post',
           'posts_per_page' => 1,
-          'category_name' => 'do-seu-jeito'
+          'category_name' => 'fala-cliente'
         ));
         if ($loop->have_posts()) :
           while ($loop->have_posts()) : $loop->the_post(); ?>
@@ -432,7 +405,7 @@ Template Name: Homepage Custom
         <?php
         $loop = new WP_Query(array(
           'post_type' => 'post',
-          'category_name' => 'destaque',
+          'category_name' => 'funcionario-destaque',
           'posts_per_page' => 1
         ));
 
@@ -441,7 +414,7 @@ Template Name: Homepage Custom
 
             <div class="card">
               <div class="info">
-                <h2>Funcionária destaque</h2>
+                <h2>Funcionário destaque</h2>
                 <h3><?php the_title(); ?></h3>
                 <p><?php the_field('chamada'); ?></p>
                 <a href="<?php the_permalink(); ?>" class="btn">Saiba mais</a>
@@ -459,17 +432,6 @@ Template Name: Homepage Custom
         wp_reset_postdata();
         ?>
 
-        <!--div class="card">
-          <div class="info">
-            <h2>Funcionária destaque</h2>
-            <h3>Amor e carinho para crescer</h3>
-            <p>Atender com excelência e tratar os colegas com respeito e atenção é o que faz de Yasmin uma funcionária de destaque</p>
-            <a href="http://brasilatacadista.com.br/saboresenegocios/amor-e-carinho-para-crescer-funcionaria-destaque/" class="btn">Saiba mais</a>
-          </div>
-          <div class="img">
-            <img src="http://brasilatacadista.com.br/saboresenegocios/wp-content/uploads/2023/04/post2-1-1024x692.jpg" alt="">
-          </div> 
-        </div-->
       </div>
 
       <div class="sidebar"></div>

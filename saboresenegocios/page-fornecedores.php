@@ -29,14 +29,13 @@ Template Name: Fornecedores
       ));
       if ($loop->have_posts()) :
         while ($loop->have_posts()) : $loop->the_post(); ?>
-
-      <!--li><img src="<?php the_field('logo'); ?>" alt=""></li-->
+      
       <?php
           $has_content = get_field('possui_conteudo');
           if ($has_content) { ?>
       <li><a href="<?php the_permalink(); ?>"><img src="<?php the_field('logo'); ?>" alt=""></a></li>
       <?php } else { ?>
-      <li><img src="<?php the_field('logo'); ?>" alt=""></li>
+      <li><a href="<?php the_field('link_vitrine'); ?>"><img src="<?php the_field('logo'); ?>" alt=""></a></li>
       <?php } ?>
 
       <?php endwhile;

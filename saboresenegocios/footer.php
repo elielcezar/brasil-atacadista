@@ -20,7 +20,7 @@
             if ($has_content) { ?>
               <li><a href="<?php the_permalink(); ?>"><img src="<?php the_field('logo'); ?>" alt=""></a></li>
             <?php } else { ?>
-              <li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo'); ?>" alt=""></a></li>
+              <li><a href="<?php the_field('link_vitrine'); ?>"><img src="<?php the_field('logo'); ?>" alt=""></a></li>
             <?php } ?>
 
         <?php endwhile;
@@ -43,19 +43,15 @@
           'orderby' => 'rand'
         ));
         if ($loop->have_posts()) :
-          while ($loop->have_posts()) : $loop->the_post(); ?>
-
-            <!--li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li-->
+          while ($loop->have_posts()) : $loop->the_post(); ?>           
 
             <?php
             $has_content = get_field('possui_conteudo');
             if ($has_content) { ?>
               <li><a href="<?php the_permalink(); ?>"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li>
             <?php } else { ?>
-              <li><a href="http://brasilatacadista.com.br/saboresenegocios/vitrine-do-fornecedor/"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li>
+              <li><a href="<?php the_field('link_vitrine'); ?>"><img src="<?php the_field('logo_branco'); ?>" alt=""></a></li>
             <?php } ?>
-
-
 
         <?php endwhile;
         endif;

@@ -17,11 +17,13 @@
 
       <div class="posts">
         <?php
+        $currentID = get_the_ID();
+
         $loop = new WP_Query(array(
           'post_type' => 'post',
           'posts_per_page' => 3,
-          'orderby' => 'rand'
-          //'offset' => 1        
+          'orderby' => 'rand',
+          'post__not_in' => array($currentID)
         ));
         if ($loop->have_posts()) :
           while ($loop->have_posts()) : $loop->the_post(); ?>

@@ -15,10 +15,13 @@
     <div class="wrapper">
       <div class="posts">
         <?php
+        $currentID = get_the_ID();
+
         $loop = new WP_Query(array(
           'post_type' => 'receita',
           'posts_per_page' => 3,
-          'orderby' => 'rand'
+          'orderby' => 'rand',
+          'post__not_in' => array($currentID)
         ));
         if ($loop->have_posts()) :
           while ($loop->have_posts()) : $loop->the_post(); ?>

@@ -133,7 +133,7 @@
     });
 
     $('.home .patrocinadores-2 .carrossel-patrocinadores').slick({
-      slidesToShow: 4,
+      slidesToShow: 5,
       dots: false,
       infinite: true,
       arrows: true,
@@ -181,7 +181,7 @@
    
 
     $('.footer-2 .patrocinadores').slick({
-      slidesToShow: 4,
+      slidesToShow: 5,
       dots: false,
       infinite: true,
       arrows: true,
