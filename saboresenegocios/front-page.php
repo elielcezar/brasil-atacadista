@@ -110,10 +110,19 @@ Template Name: Homepage Custom
                 ));
                 if ($loop->have_posts()) :
                   while ($loop->have_posts()) : $loop->the_post(); ?>
+
+                <?php
+                    $image = get_field('capa');
+                    $size = 'revistas'; // (thumbnail, medium, large, full or custom size)            
+                  ?>
                 
                
                   <a href="<?php the_field('url'); ?>">
-                      <img src="<?php the_field('capa'); ?>" alt="">                      
+                    <?php 
+                    if( $image ) {
+                      echo wp_get_attachment_image( $image, $size );
+                    }
+                    ?>
                   </a>
                   
                 <?php endwhile;
