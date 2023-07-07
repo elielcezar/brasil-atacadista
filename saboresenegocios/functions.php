@@ -27,6 +27,7 @@ add_image_size('destaque-noticia', 540, 345, true);
 add_image_size('thumb-noticia', 485, 329, true);
 add_image_size('carrossel', 670, 420, true);
 add_image_size('thumb-triplo-home', 353, 234, true);
+add_image_size('revistas', 660, 868, true);
 
 function register_my_menus()
 {

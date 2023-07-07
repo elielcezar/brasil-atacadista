@@ -21,7 +21,7 @@ Template Name: Revistas
   <div class="container">
 
     <ul class="fornecedores">
-      <?php
+    <?php
       $loop = new WP_Query(array(
         'post_type' => 'revistas',
         'posts_per_page' => -1,        
@@ -30,10 +30,19 @@ Template Name: Revistas
       ));
       if ($loop->have_posts()) :
         while ($loop->have_posts()) : $loop->the_post(); ?>
+
+      <?php
+            $image = get_field('capa');
+            $size = 'revistas'; // (thumbnail, medium, large, full or custom size)            
+      ?>
       
       <li>
         <a href="<?php the_field('url'); ?>">
-            <img src="<?php the_field('capa'); ?>" alt="">
+            <?php 
+            if( $image ) {
+              echo wp_get_attachment_image( $image, $size );
+            }
+            ?>
             <p class="btn"><?php the_title(); ?></p>
         </a>
         </li>
