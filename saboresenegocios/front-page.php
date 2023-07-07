@@ -100,8 +100,26 @@ Template Name: Homepage Custom
 
           <div class="revista">
             <h3>Revista</h3>
-            <p>Clique para a primeira edição!</p>
-            <a href="http://brasilatacadista.com.br/saboresenegocios/revista"><img src="http://brasilatacadista.com.br/saboresenegocios/wp-content/uploads/2023/04/capa-1.jpg" alt=""></a>
+            <p>EDIÇÃO DE INVERNO</p>
+            <?php
+                $loop = new WP_Query(array(
+                  'post_type' => 'revistas',
+                  'posts_per_page' => 1,        
+                  'order' => 'DESC'       
+
+                ));
+                if ($loop->have_posts()) :
+                  while ($loop->have_posts()) : $loop->the_post(); ?>
+                
+               
+                  <a href="<?php the_field('url'); ?>">
+                      <img src="<?php the_field('capa'); ?>" alt="">                      
+                  </a>
+                  
+                <?php endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
           </div>
 
           <div class="banner">
